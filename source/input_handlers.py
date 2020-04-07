@@ -11,15 +11,14 @@ def handle_keys(key):
         elif key.vk == libtcod.KEY_RIGHT:
                 return {'move': (1, 0)}
         # WASD
-        if key.vk == libtcod.KEY_CHAR:
-                if key.c == ord('w'):
-                        return {'move': (0, -1)}
-                elif key.c == ord('s'):
-                        return {'move': (0, 1)}
-                elif key.c == ord('a'):
-                        return {'move': (-1, 0)}
-                elif key.c == ord('d'):
-                        return {'move': (1, 0)}
+        if key.c == 119:
+                return {'move': (0, -1)}
+        elif key.c == 115:
+                return {'move': (0, 1)}
+        elif key.c == 97:
+                return {'move': (-1, 0)}
+        elif key.c == 100:
+                return {'move': (1, 0)}
 
         if key.vk == libtcod.KEY_ENTER and (key.lalt or key.ralt):
                 # Alt+Enter: toggle full screen
