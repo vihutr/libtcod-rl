@@ -76,7 +76,7 @@ def main():
                 if fov_recompute:
                         recompute_fov(fov_map, player.x, player.y, fov_radius, fov_light_walls, fov_algorithm)
 
-                render_all(con, panel, entities, player, game_map, fov_map, fov_recompute, screen_width, screen_height,
+                render_all(con, panel, entities, player, game_map, fov_map, fov_recompute, message_log, screen_width, screen_height,
                                 bar_width, panel_height, panel_y, colors)
                 libtcod.console_flush()
 
@@ -119,6 +119,7 @@ def main():
 
                         if message:
                                 print(message)
+                                message_log.add_message(message)
                         
                         if dead_entity:
                                 if dead_entity == player:
@@ -126,7 +127,7 @@ def main():
                                 else:
                                         message = kill_monster(dead_entity)
                                         
-                                print(message)
+                                message_log.add_message(message)
 
                 if game_state == GameStates.ENEMY_TURN:
                         for entity in entities:
@@ -139,6 +140,7 @@ def main():
 
                                                 if message:
                                                         print(message)
+                                                        message_log.add_message(message)
 
                                                 if dead_entity:
                                                         if dead_entity == player:
@@ -146,7 +148,7 @@ def main():
                                                         else:
                                                                 message = kill_monster(dead_entity)
                                         
-                                                        print(message)
+                                                        message_log.add_message(message)
 
                                                         if game_state == GameStates.PLAYER_DEAD:
                                                                 break
